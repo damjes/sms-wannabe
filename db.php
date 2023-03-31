@@ -1,8 +1,8 @@
 <?php
 
 $db_host = 'localhost';
-$db_login = 'root';
-$db_haslo = '';
+$db_login = 'sms_wannabe';
+$db_haslo = 'sms_wannabe';
 $db_baza = 'sms_wannabe';
 
 $pieprz = "3QrNmfyfdx9Cnqqs";

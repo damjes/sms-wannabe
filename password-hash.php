@@ -9,20 +9,37 @@
 <body>
 <?php
 
-$pieprz = "3QrNmfyfdx9Cnqqs";
-
 if(!empty($_POST['haslo'])) {
+	require_once 'db.php';
 	$haslo = $_POST['haslo'];
 	$haslo_hash = password_hash($haslo.$pieprz, PASSWORD_DEFAULT);
-	echo "<div class=\"komunikat\">".$haslo_hash."</div>";
+
+	if(empty($_POST['uzyszkodnik'])) {
+		echo "<div class=\"komunikat\">".$haslo_hash."</div>";
+	} else {
+		$uzyszkodnik = $_POST['uzyszkodnik'];
+		$uzyszkodnik = $polaczenie->escape_string($uzyszkodnik);
+		$zapytanie = "UPDATE uzyszkodnik SET hasz_hasla='".$haslo_hash."' WHERE id=".$uzyszkodnik;
+		$polaczenie->query($zapytanie);
+		$polaczenie->close();
+		echo "<div class=\"komunikat\">Hasło zostało zmienione</div>";
+	}
 }
 
 ?>
 
 	<form action="password-hash.php" method="POST">
-		<label for="haslo">Hasło:</label>
-		<input type="input" name="haslo" id="haslo">
-		<input type="submit" value="Hashuj">
+		<p>
+			<label for="uzyszkodnik">ID użyszkodnika:</label>
+			<input type="text" name="uzyszkodnik" id="uzyszkodnik">
+		</p>
+		<p>
+			<label for="haslo">Hasło:</label>
+			<input type="input" name="haslo" id="haslo">
+		</p>
+		<p>
+			<input type="submit" value="Hashuj">
+		</p>
 
 </body>
 </html>
