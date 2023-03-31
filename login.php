@@ -4,6 +4,10 @@ session_start();
 
 $komunikat = "Niepoprawny login lub hasło";
 
+if($_SERVER['REQUEST_METHOD'] == 'GET') {
+	$komunikat = "";
+}
+
 if(!empty($_SESSION['id'])) {
 	header('Location: index.php');
 	exit();
