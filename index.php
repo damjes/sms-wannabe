@@ -12,7 +12,6 @@ $id = $_SESSION['id'];
 require_once 'db.php';
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,12 +19,14 @@ require_once 'db.php';
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>SMS Wannabe</title>
+	<link rel="stylesheet" href="styl.css">
 </head>
 <body>
-	<h1>SMS Wannabe</h1>
-	<h2>Napisz wiadomość</h2>
-	<form action="" method="POST"></form>
-	<h2>Wiadomości:</h2>
+	<div class="kontener">
+		<h1>SMS Wannabe</h1>
+		<h2>Napisz wiadomość</h2>
+		<form action="" method="POST"></form>
+		<h2>Wiadomości:</h2>
 <?php
 
 $zapytanie = "SELECT * FROM w_obie_z_loginem WHERE od=".$id." ORDER BY timestamp DESC";
@@ -52,6 +53,7 @@ if($wynik->num_rows > 0) {
 mysqli_close($polaczenie);
 
 ?>
-	<a href="logout.php">Wyloguj</a>
+		<a href="logout.php">Wyloguj</a>
+	</div>
 </body>
 </html>

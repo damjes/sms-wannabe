@@ -35,7 +35,6 @@ if(!empty($_POST['login']) && !empty($_POST['haslo'])) {
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,9 +42,11 @@ if(!empty($_POST['login']) && !empty($_POST['haslo'])) {
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Niezalogowany</title>
+	<link rel="stylesheet" href="styl.css">
 </head>
 <body>
-	<h1>Logowanie</h1>
+	<div class="kontener">
+		<h1>Logowanie</h1>
 <?php
 
 if(!empty($komunikat)) {
@@ -53,12 +54,13 @@ if(!empty($komunikat)) {
 }
 
 ?>
-	<form action="login.php" method="POST">
-		<label for="login">Login:</label>
-		<input type="text" name="login" id="login">
-		<label for="haslo">Hasło:</label>
-		<input type="password" name="haslo" id="haslo">
-		<input type="submit" value="Zaloguj">
-	</form>
+		<form action="login.php" method="POST">
+			<label for="login">Login:</label>
+			<input type="text" name="login" id="login">
+			<label for="haslo">Hasło:</label>
+			<input type="password" name="haslo" id="haslo">
+			<input type="submit" value="Zaloguj">
+		</form>
+	</div>
 </body>
 </html>
